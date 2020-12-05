@@ -1,0 +1,35 @@
+base: '%env(VIRTUAL_HOST_2)%'
+baseVariants: {  }
+errorHandling: {  }
+languages:
+  -
+    title: English
+    enabled: true
+    languageId: '0'
+    base: /
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: English
+    hreflang: en-us
+    direction: ltr
+    flag: us
+    websiteTitle: ''
+rootPageId: 74
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+      yoast-snippetpreview.json: 1480321830
+routes:
+  -
+    route: robots.txt
+    type: staticText
+    content: "User-agent: *\r\n\r\nDisallow: /typo3/\r\nDisallow: /typo3conf/\r\nAllow: /typo3conf/ext/\r\n\r\n# sitemap\r\nSitemap: %env(VIRTUAL_HOST_2)%/sitemap.xml"
+  -
+    route: humans.txt
+    type: staticText
+    content: "/* SITE */\r\nSite: https://github.com/t3kit\r\nStandards: HTML5, CSS3, PHP7\r\nComponents: TYPO3 v10, t3kit10, Bootstrap 5"
+theme: t3kit
+websiteTitle: 'Site 2'

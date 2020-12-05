@@ -1,0 +1,128 @@
+{
+  "name": "t3kit/t3kit-starter",
+  "description": "Starter point for t3kit project. t3kit and TYPO3 dependencies, folder structure, custom site configurations, local environment based on Docker, CI/CD configs",
+  "type": "project",
+  "keywords": [
+    "t3kit",
+    "typo3",
+    "cms",
+    "starter",
+    "t3kit10"
+  ],
+  "homepage": "http://t3kit.com",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "t3kit Community",
+      "homepage": "https://github.com/t3kit"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/t3kit/t3kit-starter/issues",
+    "forum": "https://typo3.slack.com/messages/t3kit",
+    "source": "https://github.com/t3kit/t3kit-starter",
+    "docs": "https://github.com/t3kit/t3kit-starter"
+  },
+  "require": {
+    "pixelant/pxa-lpeh": "^1.0.0",
+    "t3kit/t3kit": "dev-master",
+    "typo3/cms-about": "^10.4.6",
+    "typo3/cms-adminpanel": "^10.4.6",
+    "typo3/cms-backend": "^10.4.6",
+    "typo3/cms-belog": "^10.4.6",
+    "typo3/cms-beuser": "^10.4.6",
+    "typo3/cms-core": "^10.4.6",
+    "typo3/cms-dashboard": "^10.4.6",
+    "typo3/cms-extbase": "^10.4.6",
+    "typo3/cms-extensionmanager": "^10.4.6",
+    "typo3/cms-felogin": "^10.4.6",
+    "typo3/cms-filelist": "^10.4.6",
+    "typo3/cms-filemetadata": "^10.4.6",
+    "typo3/cms-fluid": "^10.4.6",
+    "typo3/cms-form": "^10.4.6",
+    "typo3/cms-frontend": "^10.4.6",
+    "typo3/cms-impexp": "^10.4.6",
+    "typo3/cms-indexed-search": "^10.4.6",
+    "typo3/cms-info": "^10.4.6",
+    "typo3/cms-install": "^10.4.6",
+    "typo3/cms-linkvalidator": "^10.4.6",
+    "typo3/cms-lowlevel": "^10.4.6",
+    "typo3/cms-opendocs": "^10.4.6",
+    "typo3/cms-recordlist": "^10.4.6",
+    "typo3/cms-recycler": "^10.4.6",
+    "typo3/cms-redirects": "^10.4.6",
+    "typo3/cms-reports": "^10.4.6",
+    "typo3/cms-rte-ckeditor": "^10.4.6",
+    "typo3/cms-scheduler": "^10.4.6",
+    "typo3/cms-seo": "^10.4.6",
+    "typo3/cms-setup": "^10.4.6",
+    "typo3/cms-sys-note": "^10.4.6",
+    "typo3/cms-t3editor": "^10.4.6",
+    "typo3/cms-tstemplate": "^10.4.6",
+    "typo3/cms-viewpage": "^10.4.6"
+  },
+  "require-dev": {
+    "brainmaestro/composer-git-hooks": "^2.8.2",
+    "squizlabs/php_codesniffer": "^3.5.6"
+  },
+  "suggest": {
+    "platformsh/config-reader": "It provides convenience wrappers for accessing the Platform.sh environment variables",
+    "helhum/typo3-console": "A reliable and powerful command line interface for TYPO3 CMS",
+    "yoast-seo-for-typo3/yoast_seo": "Yoast SEO for TYPO3",
+    "friendsoftypo3/frontend-editing": "Enable editors to work with the content in the most intuitive way possible",
+    "apache-solr-for-typo3/solr": "Apache Solr for TYPO3"
+  },
+  "autoload": {},
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "platform": {
+      "php": "7.4"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "typo3-cms-scripts": [
+    ],
+    "pre-install-cmd": [
+      "composer validate --no-check-all --strict"
+    ],
+    "post-install-cmd": [
+      "vendor/bin/cghooks add --ignore-lock"
+    ],
+    "post-update-cmd": [
+      "vendor/bin/cghooks update"
+    ],
+    "post-autoload-dump": [
+    ],
+    "post-create-project-cmd": [
+      "composer env"
+    ],
+    "env": "cp .localconf/local.env .env",
+    "dbup": "./.localconf/db/setupdb.sh",
+    "dbre": "./.localconf/db/restoredb.sh",
+    "dbp": "./.localconf/db/packdb.sh",
+    "syncdb": "./.localconf/platformsh/scripts/db/syncdb.sh",
+    "syncfiles": "./.localconf/platformsh/scripts/files/syncfiles.sh",
+    "syncall": [
+      "@syncdb",
+      "@syncfiles"
+    ],
+    "refindex": "docker-compose exec -T web php /var/www/html/public/typo3/sysext/core/bin/typo3 referenceindex:update",
+    "lint-php": "vendor/bin/phpcs --colors",
+    "lint-yaml": "vendor/bin/yaml-lint --ansi config/ .localconf/",
+    "test": [
+      "@lint-php",
+      "@lint-yaml"
+    ],
+    "ddev-config": "bash .localconf/community/ddev/setupddev.sh",
+    "t3kit-upgrade": "git merge -X theirs --squash --allow-unrelated-histories t3kit/master"
+  },
+  "extra": {
+    "hooks": {
+      "pre-commit": [
+        "composer test"
+      ]
+    }
+  }
+}
