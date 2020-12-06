@@ -114,4 +114,32 @@ switch (\TYPO3\CMS\Core\Core\Environment::getContext()) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['belogErrorReporting'] = 0;
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = 4096; // Default = 4096
         break; //_______________________________________________________________________________________
+
+    case 'Production/LAMP':
+        // SetEnv TYPO3_CONTEXT Development/LAMP
+        // DB
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = getenv('DB_HOST');
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = getenv('DB_NAME');
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = getenv('DB_USER');
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = getenv('DB_PASS');
+       
+        // BR
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['sessionTimeout'] = 3600;
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] = false;
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['compressionLevel'] = 5;
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['installToolPassword'] = getenv('INST_TOOL_PW');
+        
+        // FE
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['debug'] = false;
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] = 5;
+
+        // SYS
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] = 'TYPO3 :: Men, visst?';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = '';
+
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLogLevel'] = 2;
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = 0;
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['belogErrorReporting'] = 0;
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = 4096; // Default = 4096
+        break; //_______________________________________________________________________________________
 }
