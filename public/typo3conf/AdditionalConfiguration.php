@@ -134,7 +134,7 @@ switch (\TYPO3\CMS\Core\Core\Environment::getContext()) {
         $GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] = 5;
 
         // SYS
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] = 'TYPO3 :: Men, visst?';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] = 'TYPO3 :: blergh';
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = '';
 
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLogLevel'] = 2;

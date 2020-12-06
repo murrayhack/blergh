@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "380f4500d6de3c1f28819bc90f6f4df5",
+    "content-hash": "71c3343273c89ca3891bb60cfbd65477",
     "packages": [
         {
             "name": "cogpowered/finediff",
@@ -858,6 +858,52 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.7.0"
             },
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "in2code/instagram",
+            "version": "5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/in2code-de/instagram.git",
+                "reference": "ff1f1dbe24e181be2fa2eb55d3fdcef495375fe9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/in2code-de/instagram/zipball/ff1f1dbe24e181be2fa2eb55d3fdcef495375fe9",
+                "reference": "ff1f1dbe24e181be2fa2eb55d3fdcef495375fe9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2",
+                "typo3/cms-core": "^10.4"
+            },
+            "type": "typo3-cms-extension",
+            "autoload": {
+                "psr-4": {
+                    "In2code\\Instagram\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Kellner",
+                    "email": "alexander.kellner@in2code.de"
+                }
+            ],
+            "description": "Show images and posts from instagram profiles without using the annoying Instagram API",
+            "homepage": "https://github.com/in2code-de/instagram",
+            "keywords": [
+                "instagram"
+            ],
+            "support": {
+                "issues": "https://github.com/in2code-de/instagram/issues",
+                "source": "https://github.com/in2code-de/instagram/tree/5.0.1"
+            },
+            "time": "2020-11-27T17:06:03+00:00"
         },
         {
             "name": "nikic/php-parser",
