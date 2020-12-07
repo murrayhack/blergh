@@ -101,6 +101,9 @@ return [
         'viewpage' => [
             'packagePath' => 'typo3/sysext/viewpage/',
         ],
+        'instagram' => [
+            'packagePath' => 'typo3conf/ext/instagram/',
+        ],
         'pxa_lpeh' => [
             'packagePath' => 'typo3conf/ext/pxa_lpeh/',
         ],
